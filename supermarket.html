@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermarket Pro</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #0056b3;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 40px;
+            letter-spacing: 2px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #004499;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            transition: background 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #003377;
+            border-radius: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('1.jpeg') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h2 {
+            font-size: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #f1f1f1;
+        }
+
+        .categories h2 {
+            font-size: 40px;
+            margin-bottom: 40px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .category-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .category-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .category-item h3 {
+            font-size: 24px;
+            margin: 15px 0;
+        }
+
+        .category-item:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Promotions Section */
+        .promotions {
+            padding: 80px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .promotions h2 {
+            font-size: 40px;
+            margin-bottom: 40px;
+        }
+
+        .promotion-banners {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .promotion-item {
+            background-color: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .promotion-item h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .promotion-item:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Featured Products */
+        .featured-products {
+            padding: 80px 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .featured-products h2 {
+            font-size: 40px;
+            margin-bottom: 40px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .product-item h3 {
+            font-size: 24px;
+            margin: 15px 0;
+        }
+
+        .product-item p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .product-item button {
+            padding: 12px 24px;
+            background-color: #0056b3;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .product-item button:hover {
+            background-color: #004499;
+        }
+
+        .product-item:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Contact Us Section */
+        .contact {
+            padding: 80px 20px;
+            background-color: #004499;
+            color: #fff;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 40px;
+            margin-bottom: 40px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+
+        .contact-form button {
+            padding: 15px 30px;
+            background-color: #0056b3;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #003377;
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px;
+            background-color: #003377;
+            color: #fff;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            .promotion-banners, .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Supermarket Pro</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#promotions">Promotions</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h2>Your One-Stop Supermarket for All Your Needs</h2>
+    </section>
+
+    
+    <section class="categories" id="categories">
+        <h2>Explore Our Categories</h2>
+        <div class="categories-grid">
+            <div class="category-item">
+                <img src="2.jpeg" alt="Fresh Produce">
+                <h3>Fresh Produce</h3>
+            </div>
+            <div class="category-item">
+                <img src="4.jpeg" alt="Dairy Products">
+                <h3>Dairy Products</h3>
+            </div>
+            <div class="category-item">
+                <img src="3.jpeg" alt="Bakery">
+                <h3>Bakery</h3>
+            </div>
+            <div class="category-item">
+                <img src="5.jpeg" alt="Beverages">
+                <h3>Beverages</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotions Section -->
+    <section class="promotions" id="promotions">
+        <h2>Special Offers & Promotions</h2>
+        <div class="promotion-banners">
+            <div class="promotion-item">
+                <h3>Buy 1 Get 1 Free</h3>
+                <p>Available on selected items</p>
+            </div>
+            <div class="promotion-item">
+                <h3>20% Off Fresh Produce</h3>
+                <p>Limited time offer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="featured-products" id="products">
+        <h2>Featured Products</h2>
+        <div class="product-grid">
+            <div class="product-item">
+                <img src="6.jpeg" alt="Product 1">
+                <h3>Organic Apples</h3>
+                <p>$3 per lb</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="7.jpeg" alt="Product 2">
+                <h3>Whole Milk</h3>
+                <p>$2 per gallon</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="8.jpeg" alt="Product 3">
+                <h3>Fresh Baguette</h3>
+                <p>$1 each</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="9.jpeg" alt="Product 4">
+                <h3>Orange Juice</h3>
+                <p>$4.99 per carton</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    
+    <footer>
+        <p>&copy; 2024 Webtouch Supermarket Pro. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
